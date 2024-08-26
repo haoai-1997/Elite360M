@@ -1,0 +1,9 @@
+'''
+CUDA_VISIBLE_DEVICES=1,2 python -m torch.distributed.launch --nproc_per_node 2 --master_port 29122 train_elite360m.py
+--log_dir ./workdirs_uni/MP3D --gpu_devices 1 2 --backbone Elite360M_Res34 --batch_size 2 --dataset MP3D --dataset_rootdir $DATASET_DIR --num_epochs 150
+--task depth_normal_segmentation --num_workers 8
+'''
+
+'''
+CUDA_VISIBLE_DEVICES=1 python eval_elite360m.py --load_weights_dir ./workdirs_uni/MP3D/ --log_dir ./test_uni/MP3D --backbone Elite360M_Res34 --dataset MP3D --dataset_rootdir $DATASET_DIR --task depth_normal_segmentation
+'''
