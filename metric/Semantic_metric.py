@@ -100,13 +100,13 @@ class Semantic_evaluator(object):
         self.metrics["err/pixAcc"].reset()
         self.metrics["err/mIoU"].reset()
 
-    def compute_eval_metrics(self, gt_semantic, pred_semantic):
+    def compute_eval_metrics(self, pred_semantic, gt_semantic):
         """
         Computes metrics used to evaluate the models
         """
         N = gt_semantic.shape[0]
 
-        pixAcc, mIoU = compute_semantic_metrics(gt_semantic, pred_semantic, self.n_class)
+        pixAcc, mIoU = compute_semantic_metrics(pred_semantic, gt_semantic, self.n_class)
 
         self.metrics["err/pixAcc"].update(pixAcc, N)
         self.metrics["err/mIoU"].update(mIoU, N)
